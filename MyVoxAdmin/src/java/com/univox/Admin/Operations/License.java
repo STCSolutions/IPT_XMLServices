@@ -23,15 +23,15 @@ public boolean  Valid_License()
 Calendar Today=Calendar.getInstance();
 
         try {
-            Date Licnece = df.parse("15/06/2011");
+            Date Licnece = df.parse("15/06/2030");
             Date today=Today.getTime();
             System.out.println("Today = " + today.after(Licnece));
             if(today.after(Licnece))
             {
                 FileWriter erasor1 = new FileWriter(new File("C:\\STCs\\Config.properties"),false);
-erasor1.write("Your POC License Finished ,Please Contact IST to purchase");
+erasor1.write("Your POC License Finished ,Please Contact STC to purchase");
 erasor1.close(); FileWriter erasor = new FileWriter(new File("C:\\STCs\\Location.properties"),false);
-erasor.write("Your POC License Finished ,Please Contact IST to purchase");
+erasor.write("Your POC License Finished ,Please Contact STC to purchase");
 erasor.close();
 return false;
             }
