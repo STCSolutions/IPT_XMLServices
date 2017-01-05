@@ -52,7 +52,7 @@ public class ActiveDirectoryConnection {
         System.out.println("Attempting to connect...");
         //ActiveDirectoryConnection AD = new ActiveDirectoryConnection( "172.20.66.180", "389", "RMH", "asalah", "104070", "DC=rmh,DC=med,DC=local" );
         //ActiveDirectoryConnection AD = new ActiveDirectoryConnection( "128.0.0.245", "3268", "smsaexpress0", "mjunaidi", "Pass1234", "OU=Information Technology,OU=RUHHQ,OU=Accounts,OU=SMSA Express Trans. Co. Ltd.,DC=smsaexpress,DC=local" );
-        ActiveDirectoryConnection AD = new ActiveDirectoryConnection("192.168.1.32", "3268", "UNIVOX", "Amr", "P@ssw0rd", "DC=univox,DC=com");
+        ActiveDirectoryConnection AD = new ActiveDirectoryConnection("10.1.11.52", "3268", "AWAL", "aatawfik", "P@ssw0rd1", "DC=awal,DC=net,DC=sa");
 
         ArrayList<User> Users = AD.getUsersInfo(AD.getCtx_AD());
         System.out.println("Users List Size=" + Users.size());
@@ -173,7 +173,7 @@ public class ActiveDirectoryConnection {
                             }
                              }
                         }
-                        System.out.print("User ipphone :" + userNUmber + "\n");
+                        System.out.print("User Name:"+attribs.get("name")+"User ipphone :" + userNUmber + "\n");
 
                         if (!userNUmber.equals("") && !userNUmber.equals(" ") && !userNUmber.equals("  ")) {
                             User UserInfo = new User();
