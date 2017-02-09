@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package com.univox.Admin.Operations;
+package com.stcs.Admin.Operations;
 
 
 import com.DB.EmployeOperations;

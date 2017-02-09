@@ -22,7 +22,7 @@ import org.acegisecurity.GrantedAuthorityImpl;
 
 /**
  *
- * @author adel
+ * @author Amr Abd El Monsif
  */
 public class ActiveDirectoryConnection {
 
@@ -52,7 +52,7 @@ public class ActiveDirectoryConnection {
         System.out.println("Attempting to connect...");
         //ActiveDirectoryConnection AD = new ActiveDirectoryConnection( "172.20.66.180", "389", "RMH", "asalah", "104070", "DC=rmh,DC=med,DC=local" );
         //ActiveDirectoryConnection AD = new ActiveDirectoryConnection( "128.0.0.245", "3268", "smsaexpress0", "mjunaidi", "Pass1234", "OU=Information Technology,OU=RUHHQ,OU=Accounts,OU=SMSA Express Trans. Co. Ltd.,DC=smsaexpress,DC=local" );
-        ActiveDirectoryConnection AD = new ActiveDirectoryConnection("10.1.11.52", "3268", "AWAL", "aatawfik", "P@ssw0rd1", "DC=awal,DC=net,DC=sa");
+        ActiveDirectoryConnection AD = new ActiveDirectoryConnection("10.1.11.52", "3268", "AWAL", "aatawfik", "P@ssw0rd1", "DC=awal,DC=com,DC=sa");
 
         ArrayList<User> Users = AD.getUsersInfo(AD.getCtx_AD());
         System.out.println("Users List Size=" + Users.size());

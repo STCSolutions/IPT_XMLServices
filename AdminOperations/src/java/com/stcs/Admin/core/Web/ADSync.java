@@ -3,10 +3,10 @@
  * and open the template in the editor.
  */
 
-package com.univox.Admin.core.Web;
+package com.stcs.Admin.core.Web;
 
-import com.univox.Admin.Operations.AdminLoader;
-import com.univox.Admin.Operations.IPPhoneEXT;
+import com.stcs.Admin.Operations.AdminLoader;
+import com.stcs.Admin.Operations.IPPhoneEXT;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;

@@ -14,7 +14,7 @@ import org.xml.sax.InputSource;
 public class IPPhone {
 
     public static HashMap<String, PhoneSeriesModel> colorPhones=new  HashMap<String, PhoneSeriesModel>();
-   public IPPhone(){
+   static{
     /**
      * Cisco IPPhone 88XX Color and Touch Size 559 x 265
      */
@@ -83,18 +83,19 @@ public class IPPhone {
     cisco79XXB.getPhoneModels().add("7970");
     cisco79XXB.getPhoneModels().add("7971");
     cisco79XXB.getPhoneModels().add("7975");
-    cisco79XXB.getPhoneModels().add("Communicator");
+    cisco79XXB.getPhoneModels().add("Communicator");//
+                                     
    colorPhones.put("Cisco79XXB", cisco79XXB);
      
    /**
      * Cisco IPPhone 792x Color and Touch Size 176 x 140
      */
    PhoneSeriesModel cisco79XXMob=new PhoneSeriesModel();
-    cisco79XXB.setSeriesName("Cisco79XXMob");
-    cisco79XXB.setPhotoSize("176.140");
-    cisco79XXB.getPhoneModels().add("7921");
-    cisco79XXB.getPhoneModels().add("7925");
-    cisco79XXB.getPhoneModels().add("7926");
+    cisco79XXMob.setSeriesName("Cisco79XXMob");
+    cisco79XXMob.setPhotoSize("176.140");
+    cisco79XXMob.getPhoneModels().add("7921");
+    cisco79XXMob.getPhoneModels().add("7925");
+    cisco79XXMob.getPhoneModels().add("7926");
     
    colorPhones.put("Cisco79XXMob", cisco79XXMob);
      
@@ -302,8 +303,10 @@ public class IPPhone {
     public static void main(String argv[]) {
         try {
 
-            System.out.println(IPPhone.getPhoneHostName("192.168.1.120"));
-            System.out.println(IPPhone.isColorPhone("192.168.1.160"));
+           // System.out.println(IPPhone.getPhoneHostName("192.168.1.120"));
+          
+          //  System.out.println(IPPhone.isColorPhone("10.22.51.101"));
+            System.out.println(IPPhone.getPhoneDetails("10.22.51.101").getPhotoSize());//
 
         } catch (Exception ex) {
             ex.printStackTrace();

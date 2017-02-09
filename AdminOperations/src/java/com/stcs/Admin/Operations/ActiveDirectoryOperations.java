@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.univox.Admin.Operations;
+package com.stcs.Admin.Operations;
 
 import com.ADConnector.ActiveDirectoryConnection;
 import com.ADConnector.User;

@@ -1,6 +1,6 @@
 
 import com.DB.EmployeOperations;
-import com.univox.Admin.Operations.ActiveDirectoryOperations;
+import com.stcs.Admin.Operations.ActiveDirectoryOperations;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import univox.callmanager.V6_1_1.realtimeservice.PhoneProvider;
@@ -19,13 +19,13 @@ public class main {
                     EmployeOperations op = new EmployeOperations();
             ActiveDirectoryOperations ADoP=new ActiveDirectoryOperations();
             if (!op.iSEmpytyPhone()) {
-FillIPExtTable();
+                FillIPExtTable();
             } else {
-System.out.println("Tabels Found Empty In IPPhoneEXT Process");
-op.dropEmployeeTable();
-op.fillEmptyMyVoxTables();
-FillIPExtTable();
-//fill tabels First
+                System.out.println("Tabels Found Empty In IPPhoneEXT Process");
+                op.dropEmployeeTable();
+                op.fillEmptyMyVoxTables();
+                FillIPExtTable();
+                //fill tabels First
             }
     }
 

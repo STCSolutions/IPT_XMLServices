@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.univox.pushtophone;
+package com.stcs.pushtophone;
 
 import java.io.InputStream;
 import java.io.OutputStreamWriter;

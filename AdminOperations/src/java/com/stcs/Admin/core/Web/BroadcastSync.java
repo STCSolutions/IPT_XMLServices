@@ -3,9 +3,9 @@
  * and open the template in the editor.
  */
 
-package com.univox.Admin.core.Web;
+package com.stcs.Admin.core.Web;
 
-import com.univox.Admin.Operations.ScheduleBrdcastLoader;
+import com.stcs.Admin.Operations.ScheduleBrdcastLoader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;

@@ -2,11 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.univox.Admin.Operations;
+package com.stcs.Admin.Operations;
 
-import com.univox.Core.Streaming.AVTransmit2;
-import com.univox.pushtophone.Push2Phone;
-import com.univox.pushtophone.Text2Base64;
+import com.stcs.Core.Streaming.AVTransmit2;
+import com.stcs.pushtophone.Push2Phone;
+import com.stcs.pushtophone.Text2Base64;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;

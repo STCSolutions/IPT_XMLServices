@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package com.univox.Admin.Operations;
+package com.stcs.Admin.Operations;
 
 import com.DB.EmployeOperations;
 import java.util.Calendar;
@@ -16,7 +16,7 @@ import java.util.TimerTask;
  */
 public class AdminLoader {
     public static void main(String[] args) {
-      //  AdminLoader lo=new AdminLoader();
+        AdminLoader lo=new AdminLoader();
 
 
 

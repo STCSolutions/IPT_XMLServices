@@ -15,14 +15,20 @@ public class CallManagerOperation {
     public boolean changeAlertingName(String ext, String guestName, String mac) {
         try {
 
+            Properties ProbFile = new Properties();
+            ProbFile.load(new FileInputStream(new File("C:\\STCs\\Config.properties")));
+            String callManagerIP = ProbFile.getProperty("callManagerIP");
+            System.out.println(callManagerIP);
+            String callManagerUserName = ProbFile.getProperty("callManagerUserName");
+            String callManagerPass = ProbFile.getProperty("callManagerPass");
             //String xml = "<lines><line index=\"1\" uuid=\"{1A496506-7763-A6B3-132D-E1A417CDE005}\"><label>" + guestName + "</label><display>ITizMagix</display><dirn uuid=\"{58ACA7DD-F0CC-22C0-F65E-C954A95F4B31}\"/><ringSetting>Use System Default</ringSetting><consecutiveRingSetting>Use System Default</consecutiveRingSetting><ringSettingIdlePickupAlert>Use System Default</ringSettingIdlePickupAlert><ringSettingActivePickupAlert>Use System Default</ringSettingActivePickupAlert><displayASCII/><e164Mask/><dialPlanWizardId>0</dialPlanWizardId><mwlPolicy>Use System Policy</mwlPolicy><maxNumCalls>4</maxNumCalls><busyTrigger>2</busyTrigger><callInfoDisplay><callerName>true</callerName><callerNumber>false</callerNumber><redirectedNumber>false</redirectedNumber><dialedNumber>true</dialedNumber></callInfoDisplay><recordingProfileName/><monitoringCSSName/><recordingFlagName>Call Recording Disabled</recordingFlagName><audibleMWI>Off</audibleMWI><speedDial/><partitionUsage>General</partitionUsage><associatedEndusers/></line><line index=\"2\" uuid=\"{2EF8C952-7523-DC39-629E-6A115AEAB5AD}\"><label/><display/><dirn uuid=\"{681D298C-4167-1FBF-3128-BC65B2CBF7CC}\"/><ringSetting>Use System Default</ringSetting><consecutiveRingSetting>Use System Default</consecutiveRingSetting><ringSettingIdlePickupAlert>Use System Default</ringSettingIdlePickupAlert><ringSettingActivePickupAlert>Use System Default</ringSettingActivePickupAlert><displayASCII/><e164Mask/><dialPlanWizardId>0</dialPlanWizardId><mwlPolicy>Use System Policy</mwlPolicy><maxNumCalls>4</maxNumCalls><busyTrigger>2</busyTrigger><callInfoDisplay><callerName>true</callerName><callerNumber>false</callerNumber><redirectedNumber>false</redirectedNumber><dialedNumber>true</dialedNumber></callInfoDisplay><recordingProfileName/><monitoringCSSName/><recordingFlagName>Call Recording Disabled</recordingFlagName><audibleMWI>Off</audibleMWI><speedDial/><partitionUsage>General</partitionUsage><associatedEndusers/></line></lines>";
             int time = 1;
             int x = 0;
-            AXLProvider axl = new AXLProvider("10.100.2.80", "admin", "pvpv!123", true);
+            AXLProvider axl = new AXLProvider(callManagerIP, callManagerUserName, callManagerPass, true);
 
             String userName = guestName;
 
-            String res = axl.sendRequest("getPhone", "<phoneName>SEP" + mac + "</phoneName>");
+            String res = axl.sendRequest("getPhone", "<name>SEP" + mac + "</name>");
 
 //            SynchronizedLogger.log(res);
             //
@@ -30,7 +36,7 @@ public class CallManagerOperation {
 
             String line1;
             String line2;
-
+            System.out.println("getPhone\n"+res);
             String linesString = res.substring(res.indexOf("<lines>"), res.indexOf("</lines>") + 8);
             //        SynchronizedLogger.log(linesString);
 
@@ -116,6 +122,7 @@ public class CallManagerOperation {
                 res = axl.sendRequest("updateLine", "<pattern>" + ext + "</pattern><alertingName>" + userName + "</alertingName>");
 
             }
+            System.out.println(res);
             //SynchronizedLogger.log("The result of updateLine\n" + res);
 
             return true;
@@ -123,7 +130,7 @@ public class CallManagerOperation {
         } catch (Exception ex) {
 
             //SynchronizedLogger.error(ex);
-
+ex.printStackTrace();
             return false;
 
         }
@@ -154,7 +161,7 @@ public class CallManagerOperation {
             int x = 0;
             AXLProvider axl = new AXLProvider(callManagerIP, callManagerUserName, callManagerPass, true);
             String res;
-            res = axl.sendRequest("getCSS", "<name>" + css + "</name>");
+            res = axl.sendRequest("getCss", "<name>" + css + "</name>");
             System.out.println("The Current Css is :"+res);
             System.out.println("--------------------");
             int i = res.indexOf("uuid");
@@ -162,7 +169,7 @@ public class CallManagerOperation {
             System.out.println("After Substring the Line :"+cssUUID);
             boolean enterLoop = true;
             int time = 1;
-while (res.contains("503 Service Unavailable") || enterLoop) {
+            while (res.contains("503 Service Unavailable") || enterLoop) {
                 x++;
                 enterLoop = false;
                 if (x == 5) {
@@ -170,7 +177,11 @@ while (res.contains("503 Service Unavailable") || enterLoop) {
                 }
                 Thread.sleep(time);
                 time = 20000;
-                 res = axl.sendRequest("updateLine", "<pattern>" + ext + "</pattern><shareLineAppearanceCSS uuid=\"" + cssUUID + "\"/>");
+                System.out.println("Sending_Update_Line");
+                 res = axl.sendRequest("updateLine", "<pattern>" + ext + "</pattern><shareLineAppearanceCssName   uuid=\"" + cssUUID + "\"/>");
+                // res = axl.sendRequest("updateLine", "<pattern>" + ext + "</pattern> <description>" + "Amr STC Phone" + "</description>");
+                 // res = axl.sendRequest("updateLine", "<pattern>" + ext + "</pattern> <shareLineAppearanceCss uuid=\"?\">" + cssUUID + "</shareLineAppearanceCss>");
+                 System.out.println(res);
             }
             return true;
         } catch (Exception ex) {
@@ -182,12 +193,12 @@ while (res.contains("503 Service Unavailable") || enterLoop) {
         CallManagerOperation op = new CallManagerOperation();
         //op.clearPhoneHistor("192.168.33.207");
         //op.changeCSS("1007", "Concord-International-CSS");
-        op.changeCSS("1021", "PhoneLock_Css");//PhoneLock_Css//Unlock_Css
-        //   op.enableDND("247", false);
+        op.changeCSS("6013", "PhoneLock_Css");//PhoneLock_Css//Unlock_Css
+         //  op.enableDND("247", false);
 ///       String mac = "00235eb68287";
- //       String mac2 = "0022555EB80E";//"0019E8AFA11A"//"B8AC6F4F2A8A";
+        String mac2 = "507B9D546C70";//"0019E8AFA11A"//"B8AC6F4F2A8A";
         /// for(int i = 0 ; i < 10;i++)
-        //   op.changeAlertingName("8667", "IST Test", mac2);
+         //  op.changeAlertingName("6013", "STC Amr", mac2);
         //     SynchronizedLogger.log(Constants.ccmPass);
         //Phone.push("Dial:7990", "10.97.112.131", "cisco", "cisco", true);
 //        op.showWelcomeScreen("EN", "Title", "10.97.112.131");

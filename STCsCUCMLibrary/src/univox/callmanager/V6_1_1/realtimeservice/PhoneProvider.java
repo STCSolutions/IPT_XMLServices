@@ -28,7 +28,7 @@ import org.apache.axis.types.UnsignedInt;
 
 /**
  *
- * @author Magdy.Alhoseiny
+ * @author Amr Abd El Monsif
  */
 public class PhoneProvider {
 

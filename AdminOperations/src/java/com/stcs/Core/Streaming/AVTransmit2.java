@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package com.univox.Core.Streaming;
+package com.stcs.Core.Streaming;
 
 import java.awt.*;
 import java.io.*;

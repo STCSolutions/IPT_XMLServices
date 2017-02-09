@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.univox.pushtophone;
+package com.stcs.pushtophone;
 
 /**
  * The <code>Text2Base64</code> class converts a standard ASCII text string into a Base64-encoded string.

@@ -48,18 +48,18 @@ public class AXLProvider implements com.cisco.ipphone.sdk.AXLProviderIF{
         authorization = new sun.misc.BASE64Encoder().encode(authorization.getBytes());
 // Form the http header
         sAXLSOAPRequest = "POST /axl/ HTTP/1.0\r\n";
-        sAXLSOAPRequest += "Host:10.100.2.80:8443\r\n";
+        sAXLSOAPRequest += "Host:"+callManager+":8443\r\n";
         sAXLSOAPRequest += "Authorization: Basic " + authorization + "\r\n";
         sAXLSOAPRequest += "Accept: text/*\r\n";
         sAXLSOAPRequest += "Content-type: text/xml\r\n";
-        sAXLSOAPRequest += "SOAPAction: \"CUCM:DB ver=7.0\"\r\n";
+        sAXLSOAPRequest += "SOAPAction: \"CUCM:DB ver=10.5\"\r\n";
         sAXLSOAPRequest += "Content-length: ";
 // Build the SOAP payload
         sAXLRequest = "<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n";
         //sAXLRequest = "<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" ";
         //sAXLRequest += "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"> ";
-        sAXLRequest += "<SOAP-ENV:Body> <axl:" + axlRequest + " xmlns:axl=\"http://www.cisco.com/AXL/1.0\" ";
-        sAXLRequest += " xsi:schemaLocation=\"http://www.cisco.com/AXL/1.0 http://ccmserver/schema/axlsoap.xsd\" ";
+        sAXLRequest += "<SOAP-ENV:Body> <axl:" + axlRequest + " xmlns:axl=\"http://www.cisco.com/AXL/API/8.0\" ";
+        sAXLRequest += " xsi:schemaLocation=\"http://www.cisco.com/AXL/API/8.0 http://ccmserver/schema/axlsoap.xsd\" ";
         sAXLRequest += "sequence=\"1234\"> " + axlParams;
         sAXLRequest += "</axl:" + axlRequest + "> </SOAP-ENV:Body> </SOAP-ENV:Envelope>";
 // finish the HTTPS Header
@@ -136,7 +136,7 @@ public class AXLProvider implements com.cisco.ipphone.sdk.AXLProviderIF{
         sAXLSOAPRequest += "Authorization: Basic " + authorization + "\r\n";
         sAXLSOAPRequest += "Accept: text/*\r\n";
         sAXLSOAPRequest += "Content-type: text/xml\r\n";
-        sAXLSOAPRequest += "SOAPAction: \"CUCM:DB ver=6.0\"\r\n";
+        sAXLSOAPRequest += "SOAPAction: \"CUCM:DB ver=10.5\"\r\n";
         sAXLSOAPRequest += "Content-length: ";
 // Build the SOAP payload
         sAXLRequest = "<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" " +
@@ -144,8 +144,8 @@ public class AXLProvider implements com.cisco.ipphone.sdk.AXLProviderIF{
                 "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n";
         //sAXLRequest = "<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" ";
         //sAXLRequest += "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"> ";
-        sAXLRequest += "<SOAP-ENV:Body> <axl:" + axlRequest + " xmlns:axl=\"http://www.cisco.com/AXL/1.0\" ";
-        sAXLRequest += " xsi:schemaLocation=\"http://www.cisco.com/AXL/1.0 http://ccmserver/schema/axlsoap.xsd\" ";
+        sAXLRequest += "<SOAP-ENV:Body> <axl:" + axlRequest + " xmlns:axl=\"http://www.cisco.com/AXL/8.0\" ";
+        sAXLRequest += " xsi:schemaLocation=\"http://www.cisco.com/AXL/API/8.0 http://ccmserver/schema/axlsoap.xsd\" ";
         sAXLRequest += "sequence=\"1234\"> " + axlParams;
         sAXLRequest += "</axl:" + axlRequest + "> </SOAP-ENV:Body> </SOAP-ENV:Envelope>";
 //        build the SOAP 
@@ -252,7 +252,7 @@ public class AXLProvider implements com.cisco.ipphone.sdk.AXLProviderIF{
         sAXLSOAPRequest += "Content-type: text/xml\r\n";
         // in RisPort SOAP ACTION = " SOAPAction: "http://schemas.cisco.com/ast/soap/action/#RisPort#SelectCmDevice"
         sAXLSOAPRequest += " SOAPAction: \"http://schemas.cisco.com/ast/soap/action/#RisPort#SelectCmDevice";
-//        sAXLSOAPRequest += "SOAPAction: \"CUCM:DB ver=6.0\"\r\n";
+//        sAXLSOAPRequest += "SOAPAction: \"CUCM:DB ver=10.5\"\r\n";
         sAXLSOAPRequest += "Content-length: ";
 
         // Build the SOAP payload
@@ -262,8 +262,8 @@ public class AXLProvider implements com.cisco.ipphone.sdk.AXLProviderIF{
 //                      " xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n";
 //        //sAXLRequest = "<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" ";
 //
-//        sAXLRequest += "<SOAP-ENV:Body> <axl:"+axlRequest+" xmlns:axl=\"http://www.cisco.com/AXL/1.0\" ";
-//        sAXLRequest += " xsi:schemaLocation=\"http://www.cisco.com/AXL/1.0 http://ccmserver/schema/axlsoap.xsd\" ";
+//        sAXLRequest += "<SOAP-ENV:Body> <axl:"+axlRequest+" xmlns:axl=\"http://www.cisco.com/AXL/8.0\" ";
+//        sAXLRequest += " xsi:schemaLocation=\"http://www.cisco.com/AXL/API/8.0 http://ccmserver/schema/axlsoap.xsd\" ";
 //        sAXLRequest += "sequence=\"1234\"> "+axlParams;
 //        sAXLRequest += "</axl:"+axlRequest+"> </SOAP-ENV:Body> </SOAP-ENV:Envelope>";
 //        build the SOAP
@@ -392,7 +392,7 @@ public class AXLProvider implements com.cisco.ipphone.sdk.AXLProviderIF{
 
     public static void main(String[] args) {
 
-        AXLProvider provider = new AXLProvider("192.168.33.90", "Administrator", "metreos1", true);
+        AXLProvider provider = new AXLProvider("10.10.10.22", "admin", "ciscoadmin", true);
 //        provider.se
 //        String mac = "00115C407632";
 //        String callingSearchSpaceName = "Walid";
