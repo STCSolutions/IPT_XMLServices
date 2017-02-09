@@ -64,7 +64,7 @@ public class PushPage extends HttpServlet {
         String SalatName=request.getParameter("SalatName");
         Vector softkeys=new Vector();
         softkeys.add(new SoftKey("Exit", "3", "Init:Services"));
-        String[] Reciving_urls = {"RTPRx:Stop", "Play:Azan1.raw"};
+        String[] Reciving_urls = {"RTPRx:Stop", "Play:Azan.raw"};
 
         Push2Phone p2p = new Push2Phone();
         p2p.push(Reciving_urls,phoneIP, Text2Base64.getBase64(CallManager_ApplicationUser_Credintials), true);
