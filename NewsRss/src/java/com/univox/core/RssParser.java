@@ -86,7 +86,7 @@ public class RssParser {
 //System.out.println("Publish Date: " + getElementValue(element,"pubDate"));
                 String D = getElementValue(element, "pubDate");
                 feed.put("Publish Date", getElementValue(element, "pubDate"));
-                System.out.println("description: " + getElementValue(element, "description"));
+                
                 String x = getElementValue(element, "description");
                 /*if(x.indexOf(" - ")!=-1)
                 x=x.substring(x.lastIndexOf(" - ")+3,x.lastIndexOf("."));*/
@@ -156,6 +156,14 @@ public class RssParser {
                         }
                     }
                 }
+                
+                  if (x.indexOf("</a>") != -1) {
+                    if (x.indexOf("</p><br clear=\"all\"/>") != -1 && (x.lastIndexOf("</p><br clear=\"all\"/>") > x.lastIndexOf("</a>"))) {
+                        x = x.substring(x.lastIndexOf("</a>")+4, x.lastIndexOf("</p><br clear=\"all\"/>"));
+                    } 
+                    System.out.println("description: " + x);
+                }
+                
                 feed.put("Description", x);
                 NewsFeeds.add(feed);
             }//for
