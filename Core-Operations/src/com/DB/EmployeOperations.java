@@ -81,6 +81,7 @@ public class EmployeOperations extends ConnectionManager {
             if ( result != null )
             {
                 String employeePin = "";
+                
                 try
                 {
                     while ( result.next() )
@@ -113,6 +114,49 @@ public class EmployeOperations extends ConnectionManager {
         }
         return false;
     }
+   
+   
+   public boolean changePin(String Ext, String Pin,String newPin)
+   {
+       
+       if ( !Ext.equals( "" ) && !Pin.equals( "" )&& !newPin.equals( "" ) )
+        {
+            String query = "SELECT emp.ID FROM employee emp inner join phone p where emp.ID=p.employeeID AND p.Extension='" + Ext + "'";
+            ResultSet result = getRows( query );
+            if ( result != null )
+            {
+                String employeeID = "";
+                
+                try
+                {
+                    while ( result.next() )
+                    {
+                        employeeID = result.getString( "ID" );
+                       
+                    }
+                    return add("update employee SET Pin='" + newPin + "' where ID=" + employeeID);
+                }
+                catch ( Exception e )
+                {
+                    e.printStackTrace();
+                    
+                }
+                finally
+                {
+                    try
+                    {
+                        result.close();
+                    }
+                    catch ( Exception e )
+                    {
+                        e.printStackTrace();
+                    }
+                    closeConnection();
+                }
+            }
+        }
+       return false;
+   }
 
 public String getUserName(String Ext)
     {
@@ -1417,8 +1461,9 @@ Thread.sleep(30);
     /////////////////////////////////////
     public static void main(String[] args) {
         EmployeOperations op = new EmployeOperations();
-   // System.out.println(op.employeeExtCheck("40222", "123"));
-       op.fillEmptyMyVoxTables();
+    System.out.println(op.employeeExtCheck("6013", "222"));
+     //System.out.println(op.changePin("6013", "123","222"));
+    //   op.fillEmptyMyVoxTables();
         //op.updateMyVoxTables();
 //        op.dropGroupsTable();
 //        op.dropOUTable();
