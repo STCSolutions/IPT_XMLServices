@@ -69,7 +69,7 @@ out.print(menu.getGraphicMenuObject());
 }
 else
 {
-CiscoIPPhoneText text=new CiscoIPPhoneText("Azan", "Thank You","Welcome To STCs Azan IP Phone XML Application" , softkeys);
+CiscoIPPhoneText text=new CiscoIPPhoneText("Azan", "Thank You","Welcome To STCs Azan IP-Phone Service" , softkeys);
 out.print(text.getTextObject());
 }
     }
