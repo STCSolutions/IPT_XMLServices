@@ -61,7 +61,7 @@ public class Confirm extends HttpServlet {
         Vector softkeys = new Vector();
         softkeys.add(new SoftKey("Back", "1", LockPage));
         softkeys.add(new SoftKey("Exit", "3", "Init:Services"));
-        CiscoIPPhoneText text = new CiscoIPPhoneText("Confirmation", "", "You Have Successfully " + OperationType + " The Azan Service on This Phone  ", softkeys);
+        CiscoIPPhoneText text = new CiscoIPPhoneText("Confirmation", "", "You Have Successfully " + OperationType + "  Azan Service on This Phone  ", softkeys);
         out.print(text.getTextObject());
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
