@@ -134,7 +134,7 @@ menuItems.add(new MenuItem("Phone Lock", PhoneLockUrl));
 menuItems.add(new MenuItem("Broadcasting", VoicePaging));
 menuItems.add(new MenuItem("Azan", AzanUrl));
 menuItems.add(new MenuItem("Rss News", NewsUrl));
-CiscoIPPhoneMenu menu=new CiscoIPPhoneMenu("STCs Phone Suit","Select Your Service", menuItems, softkeys);
+CiscoIPPhoneMenu menu=new CiscoIPPhoneMenu("STCs IP-Phone Services","Select Your Service", menuItems, softkeys);
 out.print(menu.getMenuObject());
 }
     } 
