@@ -45,7 +45,7 @@ public class Lock extends HttpServlet {
         String confirmationPage=url+"Confirm";
           Vector menuItems=new Vector();
           menuItems.add(new MenuItem("Lock The Phone", confirmationPage+"?Flag=Lock"));
-          menuItems.add(new MenuItem("UNLock The Phone", confirmationPage+"?Flag=UnLock"));
+          menuItems.add(new MenuItem("Un-Lock The Phone", confirmationPage+"?Flag=UnLock"));
 
         Vector softkeys=new Vector();
         softkeys.add(new SoftKey("Select", "1", "SoftKey:Select"));

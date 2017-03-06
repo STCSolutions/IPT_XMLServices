@@ -6,11 +6,14 @@ package com.univox.web;
 
 
 
+import Com.Stcs.IPPhone.Objects.CiscoIPPhoneText;
+import Com.Stcs.IPPhone.Objects.SoftKey;
 import com.DB.EmployeOperations;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.URLEncoder;
+import java.util.Vector;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,7 +25,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author AMR
  */
-public class UserCheck extends HttpServlet {
+public class CheckNewPin extends HttpServlet {
 
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -33,7 +36,7 @@ public class UserCheck extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+           response.setContentType("text/xml;charset=UTF-8");
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession(true);
         String thisServer = InetAddress.getLocalHost().getHostAddress();
@@ -42,26 +45,34 @@ public class UserCheck extends HttpServlet {
         String path = sc.getContextPath();
         String url = "http://" + thisServer + ":" + thisPort + path + "/";
        
-        String LockPage = url + "Lock";
+        String Welcome = url + "welcome";
         String ErrorPage = url + "ErrorPage";
         String ext = "";
         String pin = "";
+        String newPin="";
                  String CredntialsError="";
         EmployeOperations op=new EmployeOperations();
         if (request.getParameter("Ext") != null && !request.getParameter("Ext").equals("")) {
             ext = (String) request.getParameter("Ext");
         }
         else {
-          CredntialsError = "User Ext and Pin Can't Be Empty";
+          CredntialsError = "Ext ,Current Pin and New Pin Can't Be Empty";
         }
-        if (request.getParameter("Pin") != null && !request.getParameter("Pin").equals(""))
+        if (request.getParameter("CurrentPin") != null && !request.getParameter("CurrentPin").equals(""))
         {
-            pin = (String) request.getParameter("Pin");
+            pin = (String) request.getParameter("CurrentPin");
         }
         else {
-           CredntialsError = "User Ext and Pin Can't Be Empty";
+           CredntialsError = "Ext ,Current Pin and New Pin Can't Be Empty";
         }
-         if(ext.equals("")||pin.equals(""))
+        if (request.getParameter("NewPin") != null && !request.getParameter("NewPin").equals(""))
+        {
+            newPin = (String) request.getParameter("NewPin");
+        }
+        else {
+           CredntialsError = "Ext ,Current Pin and New Pin Can't Be Empty";
+        }
+         if(ext.equals("")||pin.equals("")||newPin.equals(""))
          {
         response.sendRedirect(ErrorPage + "?Message=" + URLEncoder.encode(CredntialsError));
         System.out.println("Ext/PIn are Empty");
@@ -73,27 +84,30 @@ public class UserCheck extends HttpServlet {
             EmployeOperations Op = new EmployeOperations();
             boolean ISAuthorized = Op.employeeExtCheck(ext, pin);
             if (ISAuthorized) {
-            session.setAttribute("Ext",ext);
-            response.sendRedirect(LockPage);
+           
+                
+                boolean pinChanged = Op.changePin(ext, pin,newPin);
+            if (pinChanged) {
+           
+                Vector softkeys=new Vector();
+                softkeys.add(new SoftKey("Done", "1",Welcome));
+                softkeys.add(new SoftKey("Exit", "3", "Init:Services"));
+                 CiscoIPPhoneText text=new CiscoIPPhoneText("Confirmation", "", "Your Pin Have Been Successfully Changed, Thanks .",softkeys);
+
+        out.print(text.getTextObject());
 
             } else {
 
-            String text = "Please Check your Credntials";
+            String text = "Unable to change Pin Now ,Kindly Try Again Later.";
             response.sendRedirect(ErrorPage + "?Message=" + URLEncoder.encode(text));
             }
 
 
 
-          /*  ActiveDirectoryConnection AD = new ActiveDirectoryConnection();//aabdelmonsif
-            if (AD.checkCredntials(DomainEmail, pin)) {
-                 session.setAttribute("Ext",ext);
-                     System.out.println(DomainEmail+" Is Autorized !");
-                response.sendRedirect(LockPage);
-            } else {
-               String text = "Please Check your Credntials,or Ask your Administrator to make sure That Active Directory is Reachable from your Phone";
-                  response.sendRedirect(ErrorPage + "?Message=" + URLEncoder.encode(text));
-
-            }*/
+            }else{
+            String text = "Please Check your Credntials";
+            response.sendRedirect(ErrorPage + "?Message=" + URLEncoder.encode(text));
+            }
         } catch (Exception ex) {
             System.out.println("Error In Connection" + ex.getMessage());
         }

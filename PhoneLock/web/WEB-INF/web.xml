@@ -24,6 +24,14 @@
         <servlet-name>ErrorPage</servlet-name>
         <servlet-class>com.univox.web.ErrorPage</servlet-class>
     </servlet>
+     <servlet>
+        <servlet-name>ChangePin</servlet-name>
+        <servlet-class>com.univox.web.ChangePin</servlet-class>
+    </servlet>
+     <servlet>
+        <servlet-name>CheckNewPin</servlet-name>
+        <servlet-class>com.univox.web.CheckNewPin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>welcome</servlet-name>
         <url-pattern>/welcome</url-pattern>
@@ -47,6 +55,14 @@
     <servlet-mapping>
         <servlet-name>ErrorPage</servlet-name>
         <url-pattern>/ErrorPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangePin</servlet-name>
+        <url-pattern>/ChangePin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckNewPin</servlet-name>
+        <url-pattern>/CheckNewPin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

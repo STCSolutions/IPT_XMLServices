@@ -43,15 +43,18 @@ public class Login extends HttpServlet {
         String path = sc.getContextPath();
         String url = "http://" + thisServer + ":" + thisPort + path + "/";
         String CheckPage=url+"UserCheck";
-        
+        String changePin=url+"ChangePin";
+
         Vector Inputs=new Vector();
         Inputs.add(new InputItem("Ext", "Ext", InputItem.NUMERIC, ""));
-        Inputs.add(new InputItem("Pin", "Pin", InputItem.PASSWORD, ""));
+        Inputs.add(new InputItem("Pin", "Pin", InputItem.DigitPASSWORD, ""));
         Vector softkeys=new Vector();
-        softkeys.add(new SoftKey("Exit", "4", "Init:Services"));
+        softkeys.add(new SoftKey("Exit", "5", "Init:Services"));
         softkeys.add(new SoftKey("Login", "1", "SoftKey:Submit"));
-        softkeys.add(new SoftKey("Back", "2", Backurl));
-        softkeys.add(new SoftKey("<<", "3", "SoftKey:<<"));
+        softkeys.add(new SoftKey("ChangePin", "4", changePin));
+
+        softkeys.add(new SoftKey("Back", "3", Backurl));
+        softkeys.add(new SoftKey("<<", "2", "SoftKey:<<"));
         CiscoIPPhoneInput input=new CiscoIPPhoneInput("Login", "Please Enter you Ext & Pin ", CheckPage, Inputs, softkeys);
         out.print(input.getInputObject());
     }
