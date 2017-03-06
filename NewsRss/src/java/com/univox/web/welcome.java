@@ -71,7 +71,7 @@ out.print(menu.getGraphicMenuObject());
 }
 else
 {
-CiscoIPPhoneText text=new CiscoIPPhoneText("RSS FEED", "Thank You","Welecome TO STCs RSS Feed IP Phone XML Application" , softkeys);
+CiscoIPPhoneText text=new CiscoIPPhoneText("RSS News", "Thank You","Welcome TO STCs RSS News IP-Phone Service" , softkeys);
 out.print(text.getTextObject());
 }
     } 
