@@ -42,6 +42,7 @@ public class PhoneProvider {
     private static void getCallManagerConfigurations() {
         Properties ProbFile = new Properties();
         try {
+            
             ProbFile.load(new FileInputStream(new File("C:\\STCs\\Config.properties")));
         } catch (IOException ex) {
         }
