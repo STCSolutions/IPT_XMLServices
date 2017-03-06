@@ -66,7 +66,7 @@ ImageName="home_"+phoneModel.getPhotoSize()+".png";
 
 Vector menuItems=new Vector();
 menuItems.add(new GraphicMenuItem(path,CategoryPage,new Point(0, 0),new Point(290, 140)));
-CiscoIPPhoneGraphicFileMenu menu=new CiscoIPPhoneGraphicFileMenu("Welcome","Welcome To STCs RSS News IP-Phone Service",url+"images/"+ImageName, menuItems, softkeys);
+CiscoIPPhoneGraphicFileMenu menu=new CiscoIPPhoneGraphicFileMenu("Welcome","Welcome To STCs News Service",url+"images/"+ImageName, menuItems, softkeys);
 out.print(menu.getGraphicMenuObject());
 }
 else
