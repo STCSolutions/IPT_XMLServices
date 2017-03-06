@@ -71,11 +71,10 @@ public class welcome extends HttpServlet {
         System.out.println(url);
         Vector softkeys=new Vector();
 
-
-softkeys.add(new SoftKey("Paging","1", VoicePaging));
-softkeys.add(new SoftKey("News","2",NewsUrl));
+softkeys.add(new SoftKey("Lock","1", PhoneLockUrl));
+softkeys.add(new SoftKey("Paging","2", VoicePaging));
 softkeys.add(new SoftKey("Azan","3" ,AzanUrl));
-softkeys.add(new SoftKey("Lock","4", PhoneLockUrl));
+softkeys.add(new SoftKey("News","4",NewsUrl));
 //softkeys.add(new SoftKey("Attendance","5", AttendanceUrl));
 softkeys.add(new SoftKey("Exit", "5", "Init:Services"));
 
