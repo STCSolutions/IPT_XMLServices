@@ -57,7 +57,7 @@ public class MainPage extends HttpServlet {
 softkeys.add(new SoftKey("Select", "1", "SoftKey:Select"));
 softkeys.add(new SoftKey("Exit", "3", "Init:Services"));
 softkeys.add(new SoftKey("Back", "2", Backurl));
-CiscoIPPhoneMenu menu=new CiscoIPPhoneMenu("Active Directory", "Please Select An Opthion", menuItems, softkeys);
+CiscoIPPhoneMenu menu=new CiscoIPPhoneMenu("Active Directory", "Please Select An Option", menuItems, softkeys);
 out.print(menu.getMenuObject());
     } 
 

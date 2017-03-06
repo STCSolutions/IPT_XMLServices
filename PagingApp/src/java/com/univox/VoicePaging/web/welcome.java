@@ -66,7 +66,7 @@ out.print(menu.getGraphicMenuObject());
 }
 else
 {
-CiscoIPPhoneText text=new CiscoIPPhoneText("Voice Paging", "Thank You","Welecome TO STCs Voice Paging IP Phone XML Application" , softkeys);
+CiscoIPPhoneText text=new CiscoIPPhoneText("Paging", "Thank You","Welcome TO STCs Paging IP-Phone Service" , softkeys);
 out.print(text.getTextObject());
 }
     }
