@@ -72,7 +72,7 @@ out.print(menu.getGraphicMenuObject());
 }
 else
 {
-CiscoIPPhoneText text=new CiscoIPPhoneText("Phone Lock", "Thank You","Welecome TO STCs Phone Lock IP Phone XML Application" , softkeys);
+CiscoIPPhoneText text=new CiscoIPPhoneText("Phone Lock", "Thank You","Welcome TO STCs Phone Lock Service" , softkeys);
 out.print(text.getTextObject());
 }
     } 
