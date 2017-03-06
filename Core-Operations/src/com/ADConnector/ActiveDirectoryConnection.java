@@ -8,7 +8,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Hashtable;
-
 import javax.naming.*;
 import javax.naming.directory.*;
 import javax.naming.ldap.*;
