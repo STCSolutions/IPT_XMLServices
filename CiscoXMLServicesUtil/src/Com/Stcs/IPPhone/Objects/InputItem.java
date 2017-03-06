@@ -24,6 +24,8 @@ public class InputItem {
      * accepted characters into an asterisk, keeping the entered value private.
      */
     public static String PASSWORD = "AP";
+    
+    public static String DigitPASSWORD = "NP";
     /**
      * InputFlag:Uppercase—enter uppercase letters as the only acceptable input.
      */
