@@ -194,6 +194,7 @@ ex.printStackTrace();
         //op.clearPhoneHistor("192.168.33.207");
         //op.changeCSS("1007", "Concord-International-CSS");
         op.changeCSS("6013", "PhoneLock_Css");//PhoneLock_Css//Unlock_Css
+        
          //  op.enableDND("247", false);
 ///       String mac = "00235eb68287";
         String mac2 = "507B9D546C70";//"0019E8AFA11A"//"B8AC6F4F2A8A";
