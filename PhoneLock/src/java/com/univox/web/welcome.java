@@ -67,12 +67,12 @@ ImageName="PhoneLock_"+phoneModel.getPhotoSize()+".png";
 
 Vector menuItems=new Vector();
 menuItems.add(new GraphicMenuItem(path,LoginPage,new Point(0, 0),new Point(290, 140)));
-CiscoIPPhoneGraphicFileMenu menu=new CiscoIPPhoneGraphicFileMenu("Welcome","Touch",url+"images/"+ImageName, menuItems, softkeys);
+CiscoIPPhoneGraphicFileMenu menu=new CiscoIPPhoneGraphicFileMenu("Welcome","Welcome To STCs Phone Lock Service",url+"images/"+ImageName, menuItems, softkeys);
 out.print(menu.getGraphicMenuObject());
 }
 else
 {
-CiscoIPPhoneText text=new CiscoIPPhoneText("Phone Lock", "Thank You","Welcome TO STCs Phone Lock Service" , softkeys);
+CiscoIPPhoneText text=new CiscoIPPhoneText("Phone Lock", "Thank You","Welcome To STCs Phone Lock Service" , softkeys);
 out.print(text.getTextObject());
 }
     } 
